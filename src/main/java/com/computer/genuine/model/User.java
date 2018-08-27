@@ -1,12 +1,15 @@
 package com.computer.genuine.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,8 +27,8 @@ public class User {
 	private String userName;
 	@Column(name = "PASSWORD")
 	private String passWord;
-	@Column(name = "ROLE_ID")
-	private int roleId;
+	/*@Column(name = "ROLE_ID")
+	private int roleId;*/
 	@Column(name = "ACTIVE")
 	private int status;
 	@Column(name = "USER_TYPE")
@@ -36,6 +39,11 @@ public class User {
 	private Date createdDate;
 	@Column(name = "LAST_UPDATED_DATE")
 	private Date lastUpdatedDate;
+	
+	@OneToMany( targetEntity=UserContactDetails.class ,orphanRemoval=true)
+	@JoinColumn(name="USER_ID") 
+    private List userContactDetails;
+	
 	
 	public User() {
 		super();
@@ -61,17 +69,25 @@ public class User {
 		return passWord;
 	}
 
+	public List getUserContactDetails() {
+		return userContactDetails;
+	}
+
+	public void setUserContactDetails(List userContactDetails) {
+		this.userContactDetails = userContactDetails;
+	}
+
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
 
-	public int getRoleId() {
+	/*public int getRoleId() {
 		return roleId;
 	}
 
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
-	}
+	}*/
 
 	public int getStatus() {
 		return status;

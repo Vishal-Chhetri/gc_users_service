@@ -1,0 +1,5 @@
+
+*.class
+*.class
+target/classes/com/computer/genuine/controller/UsersController.class
+*.class

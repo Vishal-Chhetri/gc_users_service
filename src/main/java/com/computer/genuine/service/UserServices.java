@@ -13,23 +13,23 @@ import com.computer.genuine.repository.UserRepository;
  * @author Vishal Chhetri
  */
 @Service
-public class UserServices {
-
+public class UserServices {	
 	
 	UserRepository userRepository;
+	
 	@Autowired
 	public UserServices(UserRepository userRepository) {
 		this.userRepository =userRepository;
 	}	
 	
-	
-	
-	public List<User> getAllPersons() {		
-		return (List<User>) userRepository.findAll();
-	}
-	
+	public List<User> getAllUsers() {		
+		return  userRepository.findAll();
+	}	
 	public Optional<User> getById(Long id) {
 		return userRepository.findById(id);
+	}
+	public User createUser(User user) {		
+		return userRepository.save(user);
 	}
 	
 }
