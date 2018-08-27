@@ -31,5 +31,17 @@ public class UserServices {
 	public User createUser(User user) {		
 		return userRepository.save(user);
 	}
+	public List<User> findByName(String userName) {		
+		return  userRepository.findByUserName(userName);				
+	}
+	public void activateUser(Long user_id) {
+		userRepository.activateUser(user_id);
+	}
+	public void deactivateUser(Long user_id) {
+		userRepository.deactivateUser(user_id);
+	}
+	public void deleteUser(Long user_id) {
+		userRepository.deleteUser(user_id);
+	}
 	
 }

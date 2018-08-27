@@ -3,6 +3,7 @@ package com.computer.genuine.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,6 @@ import javax.persistence.Table;
 @Table(name = "USERS")
 public class User {		
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "USER_ID")
 	private Long userId;
@@ -40,9 +40,9 @@ public class User {
 	@Column(name = "LAST_UPDATED_DATE")
 	private Date lastUpdatedDate;
 	
-	@OneToMany( targetEntity=UserContactDetails.class ,orphanRemoval=true)
+	@OneToMany( targetEntity=UserContactDetails.class,cascade=CascadeType.ALL)// ,orphanRemoval=true
 	@JoinColumn(name="USER_ID") 
-    private List userContactDetails;
+    private List<UserContactDetails> userContactDetails;
 	
 	
 	public User() {
@@ -69,11 +69,11 @@ public class User {
 		return passWord;
 	}
 
-	public List getUserContactDetails() {
+	public List<UserContactDetails> getUserContactDetails() {
 		return userContactDetails;
 	}
 
-	public void setUserContactDetails(List userContactDetails) {
+	public void setUserContactDetails(List<UserContactDetails> userContactDetails) {
 		this.userContactDetails = userContactDetails;
 	}
 

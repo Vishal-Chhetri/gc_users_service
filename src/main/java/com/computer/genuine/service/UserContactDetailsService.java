@@ -1,6 +1,7 @@
 package com.computer.genuine.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,12 @@ public class UserContactDetailsService {
 	public List<UserContactDetails> getAllUserContactDetails(){
 		return userContactDetailsRepository.findAll();
 	}
+	
+	public Optional<UserContactDetails> getById(Long userContactId){
+		return  userContactDetailsRepository.findById(userContactId);
+	}
+	public void deleteUserContactById(Long userContactId){
+		userContactDetailsRepository.deleteById(userContactId);
+	}
+	
 }
