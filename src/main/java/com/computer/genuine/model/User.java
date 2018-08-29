@@ -40,9 +40,13 @@ public class User {
 	@Column(name = "LAST_UPDATED_DATE")
 	private Date lastUpdatedDate;
 	
-	@OneToMany( targetEntity=UserContactDetails.class,cascade=CascadeType.ALL)// ,orphanRemoval=true
+	@OneToMany( targetEntity=UserContactDetails.class,cascade=CascadeType.ALL)
 	@JoinColumn(name="USER_ID") 
-    private List<UserContactDetails> userContactDetails;
+    private List<UserContactDetails> userContactDetails;	
+
+	@OneToMany( targetEntity=UserRoleMapping.class,cascade=CascadeType.ALL)
+	@JoinColumn(name="USER_ID") 
+    private List<UserRoleMapping> userRoleMapping;
 	
 	
 	public User() {
@@ -129,6 +133,12 @@ public class User {
 		this.lastUpdatedDate = lastUpdatedDate;
 	}
 	
-	
+	public List<UserRoleMapping> getUserRoleMapping() {
+		return userRoleMapping;
+	}
+
+	public void setUserRoleMapping(List<UserRoleMapping> userRoleMapping) {
+		this.userRoleMapping = userRoleMapping;
+	}
 	
 }
