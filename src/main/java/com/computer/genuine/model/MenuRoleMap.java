@@ -28,6 +28,14 @@ public class MenuRoleMap {
 	@JoinColumn(name="MENU_ID" , updatable=false , insertable =false)
 	private MenuList menu;
 	
+	public MenuList getMenu() {
+		return menu;
+	}
+
+	public void setMenu(MenuList menu) {
+		this.menu = menu;
+	}
+
 	public MenuRoleMap() {
 		super();
 	}

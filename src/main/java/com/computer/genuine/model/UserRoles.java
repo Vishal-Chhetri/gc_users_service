@@ -54,5 +54,12 @@ public class UserRoles implements Serializable{
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
+	public List<MenuRoleMap> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(List<MenuRoleMap> userRoles) {
+		this.userRoles = userRoles;
+	}
 
 }
