@@ -1,10 +1,16 @@
 package com.computer.genuine.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -13,15 +19,21 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="USER_ROLES")
-public class UserRoles {
+public class UserRoles implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="USER_ROLES_ID")
 	private Long userRolesId;	
-	@Column(name="USER_ROLE_MAP_ID")
-	private Long userRoleMapId;
 	@Column(name="ROLE_NAME")
 	private String roleName;
+	
+	@OneToMany
+	@JoinColumn(name="USER_ROLES_ID")
+	private List<MenuRoleMap> userRoles;
 	
 	public UserRoles() {
 		super();
@@ -35,14 +47,6 @@ public class UserRoles {
 		this.userRolesId = userRolesId;
 	}
 
-	public Long getUserRoleMapId() {
-		return userRoleMapId;
-	}
-
-	public void setUserRoleMapId(Long userRoleMapId) {
-		this.userRoleMapId = userRoleMapId;
-	}
-
 	public String getRoleName() {
 		return roleName;
 	}
@@ -50,6 +54,5 @@ public class UserRoles {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	
-	
+
 }
