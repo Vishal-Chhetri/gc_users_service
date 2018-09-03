@@ -31,6 +31,9 @@ public class UserServices {
 	public User createUser(User user) {		
 		return userRepository.save(user);
 	}
+	public List<User> createUsers(List<User> users) {		
+		return userRepository.saveAll(users);
+	}
 	public List<User> findByName(String userName) {		
 		return  userRepository.findByUserName(userName);				
 	}

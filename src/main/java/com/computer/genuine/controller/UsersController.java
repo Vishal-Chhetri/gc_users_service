@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.computer.genuine.model.User;
@@ -17,6 +18,7 @@ import com.computer.genuine.service.UserServices;
  * @author Vishal Chhetri
  */
 @RestController
+@RequestMapping("/users")
 public class UsersController {
 	
 	
@@ -26,7 +28,7 @@ public class UsersController {
 	this.userServices = userServices;	
 	}
 	
-	@GetMapping("/users")
+	@GetMapping("/")
 	public List<User> getAllUsers() {	
 		return userServices.getAllUsers();
 	}
@@ -34,7 +36,7 @@ public class UsersController {
 	public List<User> findByName(@PathVariable String userName) {	
 		return userServices.findByName(userName);
 	}
-	@GetMapping("/users/{userId}")
+	@GetMapping("/{userId}")
 	public Optional<User> getUserById(@PathVariable Long userId) {	
 		return userServices.getById(userId);
 	}
