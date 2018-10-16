@@ -26,18 +26,16 @@ public class User {
 	@Column(name = "USER_NAME")
 	private String userName;
 	@Column(name = "PASSWORD")
-	private String passWord;
-	/*@Column(name = "ROLE_ID")
-	private int roleId;*/
+	private String passWord;	
 	@Column(name = "ACTIVE")
 	private int status;
 	@Column(name = "USER_TYPE")
 	private int userType;
 	@Column(name = "PHOTO")
 	private byte[] userPhoto;
-	@Column(name = "CREATED_DATE")
-	private Date createdDate;
-	@Column(name = "LAST_UPDATED_DATE")
+	@Column(name = "CREATED_DATE")	
+	private Date createdDate;	
+	@Column(name = "LAST_UPDATED_DATE")	
 	private Date lastUpdatedDate;
 	
 	@OneToMany( targetEntity=UserContactDetails.class,cascade=CascadeType.ALL)
