@@ -41,7 +41,7 @@ public class UsersController {
 		return userServices.getById(userId);
 	}
 	@GetMapping("/validateUser")
-	public User validateUser(@RequestBody User user) {
+	public Optional<User> validateUser(@RequestBody User user) {
 		return userServices.validateUser(user);
 	}
 	@PostMapping("/createUser")

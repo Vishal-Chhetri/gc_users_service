@@ -47,8 +47,10 @@ public class UserServices {
 		userRepository.deleteUser(user_id);
 	}
 
-	public User validateUser(User user) {
-		return userRepository.validateUser(user.getUserName(), user.getPassWord());
+	public Optional<User> validateUser(User user) {
+		Long user_id = userRepository.validateUser(user.getUserName(), user.getPassWord());
+		
+		return getById(user_id);
 	}
 	
 }
