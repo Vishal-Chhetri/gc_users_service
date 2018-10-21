@@ -40,6 +40,10 @@ public class UsersController {
 	public Optional<User> getUserById(@PathVariable Long userId) {	
 		return userServices.getById(userId);
 	}
+	@GetMapping("/validateUser")
+	public User validateUser(@RequestBody User user) {
+		return userServices.validateUser(user);
+	}
 	@PostMapping("/createUser")
 	public User createUser(@RequestBody User user) {
 		return userServices.createUser(user);		

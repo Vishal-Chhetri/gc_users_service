@@ -32,5 +32,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	@Modifying
 	@Query("delete from User where user_id =:user_id")
 	public void deleteUser(@Param("user_id") Long user_id);
+	@Query("select * from User where userName=:userName and passWord=:passWord")
+	public User validateUser(@Param("userName") String userName , @Param("passWord") String passWord );
 	
 }
